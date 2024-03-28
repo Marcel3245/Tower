@@ -3,3 +3,5 @@ venv
 training/pictures/output/*
 
 training/pictures/training/*
+
+test.py
