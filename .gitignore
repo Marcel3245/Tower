@@ -1,0 +1,6 @@
+/venv/*
+.venv
+training/pictures/output/*
+.training/pictures/output/*
+
+training/pictures/training/*
