@@ -25,3 +25,12 @@ servo_y.angle = 20
 time.sleep(1)
 # servo_y.angle = 90
 # time.sleep(1)
+
+currentPosition_x = 90.00
+currentPosition_y = 180.00
+servo_x = servo.Servo(pca.channels[14], actuation_range=180, min_pulse=servo_min, max_pulse=servo_max)
+servo_y = servo.Servo(pca.channels[15], actuation_range=180, min_pulse=servo_min, max_pulse=servo_max)
+servo_x.angle = currentPosition_x
+servo_y.angle = currentPosition_y
+print("Starting position: theta_x = 90.00 degrees, theta_y = 180.00 degrees")
+time.sleep(.1)
