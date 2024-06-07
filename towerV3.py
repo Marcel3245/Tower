@@ -27,8 +27,11 @@ HEIGHT = 720
 picam2 = Picamera2()
 picam2.preview_configuration.main.size = (WIDTH, HEIGHT)
 picam2.preview_configuration.main.format = "RGB888"
-picam2.start(show_preview=True)
-picam2.set_controls({"AfMode": controls.AfModeEnum.Manual, "LensPosition": 0.0})
+picam2.start()
+
+# Enable continuous autofocus
+picam2.set_controls({"AfMode": controls.AfModeEnum.Continuous})
+
 minW = 20
 minH = 20
 
