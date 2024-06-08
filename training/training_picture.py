@@ -1,6 +1,8 @@
 import cv2
 import os
 import time
+from picamera2 import Picamera2
+from libcamera import controls
 
 # Define the folder structure
 folder_name = input('Give your name: ')
@@ -11,7 +13,13 @@ if not os.path.exists(path):
     os.makedirs(path)
 
 # Initialize the camera
-cap = cv2.VideoCapture(0)
+picam2 = Picamera2()
+picam2.preview_configuration.main.size = (WIDTH, HEIGHT)
+picam2.preview_configuration.main.format = "RGB888"
+picam2.start()
+
+# Enable continuous autofocus
+picam2.set_controls({"AfMode": controls.AfModeEnum.Continuous})
 
 # Check if the camera is opened successfully
 if not cap.isOpened():
@@ -29,10 +37,13 @@ filename_prefix = "image_"
 start_time = time.time()
 current_time = start_time
 
+print("Sit still, I'm taking pictures of your face!")
+time.sleep(1)
+
 try:
     counter = 1
     while current_time - start_time <= duration:
-        ret, frame = cap.read()
+        frame = picam2.capture_array()
 
         if ret:
             # Save the captured frame as an image
@@ -48,8 +59,9 @@ try:
         else:
             print("Error: Failed to capture frame.")
             break
-
+        cv2.imshow('Video', frame)
+        k = cv2.waitKey(30) & 0xff
+        
 finally:
     # Release the camera and close all OpenCV windows
-    cap.release()
-    cv2.destroyAllWindows()
+    break
