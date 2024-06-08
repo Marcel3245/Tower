@@ -64,4 +64,5 @@ try:
         
 finally:
     # Release the camera and close all OpenCV windows
+    picam2.release()
     break
