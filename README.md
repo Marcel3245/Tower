@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="617" height="426" alt="image" src="https://github.com/user-attachments/assets/e50f22e0-69be-464d-97fd-18b05be81a58" />
+</p>
+
 # Face and Gesture Controlled Camera Tower
 
 ## Introduction
